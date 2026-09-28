@@ -51,6 +51,7 @@ public class PhilosopherAgent extends Agent {
             System.out.println("P" + id + " eats");
             state = State.EATING;
             TableView.setState(id, TableView.State.EATING);
+            TableView.addMeal(id);
         } else {
             state = State.THINKING;
             TableView.setState(id, TableView.State.THINKING);

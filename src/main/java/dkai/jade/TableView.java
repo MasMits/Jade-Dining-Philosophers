@@ -11,6 +11,7 @@ public class TableView extends JPanel {
 
     private State[] states;
     private boolean[] forkFree;
+    private int[] meals;
     private static final Color THINKING_COLOR = new Color(120, 200, 140);
     private static final Color WAITING_COLOR  = new Color(250, 210, 90);
     private static final Color EATING_COLOR   = new Color(235, 100, 90);
@@ -23,6 +24,7 @@ public class TableView extends JPanel {
         view.states = new State[count];
         view.forkFree = new boolean[count];
         for (int i = 0; i < count; i++) {
+            view.meals = new int[count];
             view.states[i] = State.THINKING;
             view.forkFree[i] = true;
         }
@@ -41,6 +43,11 @@ public class TableView extends JPanel {
 
     public static void setFork(int id, boolean free) {
         view.forkFree[id] = free;
+        view.repaint();
+    }
+
+    public static void addMeal(int id) {
+        view.meals[id]++;
         view.repaint();
     }
 
@@ -76,6 +83,7 @@ public class TableView extends JPanel {
             g.fillOval(x - 30, y - 30, 60, 60);
             g.setColor(Color.BLACK);
             g.drawString("P" + i, x - 8, y + 5);
+            g.drawString("meals: " + meals[i], x - 22, y + 45);
         }
 
         g.drawString("Green: Thinking, Yellow: Waiting, Red: Eating, Red square: Fork in use, Grey square: Free Fork", 10, 20);
