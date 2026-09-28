@@ -35,13 +35,17 @@ public class ManagerAgent extends Agent {
     }
 
     private void take(ACLMessage request, int id) {
-        int left = id;
-        int right = (id + 1) % forks.length;
+        int left = (id + forks.length - 1) % forks.length;
+        int right = id;
         boolean available = forks[left] && forks[right];
 
         if (available) {
             forks[left] = false;
             forks[right] = false;
+            // --- Visualisations
+            TableView.setFork(left, false);
+            TableView.setFork(right, false);
+            // ---
             System.out.println("P" + id + " took forks " + left + " and " + right);
         }
 
@@ -51,10 +55,14 @@ public class ManagerAgent extends Agent {
     }
 
     private void release(int id) {
-        int left = id;
-        int right = (id + 1) % forks.length;
+        int left = (id + forks.length - 1) % forks.length;
+        int right = id;
         forks[left] = true;
         forks[right] = true;
+        // --- Visualisations
+        TableView.setFork(left, true);
+        TableView.setFork(right, true);
+        //
         System.out.println("P" + id + " released forks " + left + " and " + right);
     }
 }
