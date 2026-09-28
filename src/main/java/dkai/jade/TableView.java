@@ -11,12 +11,12 @@ public class TableView extends JPanel {
 
     private State[] states;
     private boolean[] forkFree;
-    private static final Color THINKING_COLOR = new Color(120, 200, 140);  // м'який зелений
-    private static final Color WAITING_COLOR  = new Color(250, 210, 90);   // теплий жовтий
-    private static final Color EATING_COLOR   = new Color(235, 100, 90);   // коралово-червоний
-    private static final Color FORK_FREE_COLOR = new Color(170, 170, 170); // світло-сірий
-    private static final Color FORK_USED_COLOR = new Color(200, 60, 60);   // темніший червоний
-    private static final Color TABLE_COLOR    = new Color(240, 230, 215);  // бежевий
+    private static final Color THINKING_COLOR = new Color(120, 200, 140);
+    private static final Color WAITING_COLOR  = new Color(250, 210, 90);
+    private static final Color EATING_COLOR   = new Color(235, 100, 90);
+    private static final Color FORK_FREE_COLOR = new Color(170, 170, 170);
+    private static final Color FORK_USED_COLOR = new Color(200, 60, 60);
+    private static final Color TABLE_COLOR    = new Color(240, 230, 215);
 
     public static void open(int count) {
         view = new TableView();
